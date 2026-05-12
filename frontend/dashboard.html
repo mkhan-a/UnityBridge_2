@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UnityBridge – Community</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<div class="layout">
+
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <div class="sidebar-logo">
+      <span class="logo-text">UnityBridge</span>
+    </div>
+    <nav class="sidebar-nav">
+      <a href="dashboard.html" class="nav-item active">Community</a>
+      <a href="#" class="nav-item" onclick="filterByType('request', this); return false;">Requests</a>
+      <a href="#" class="nav-item" onclick="filterByType('offer', this); return false;">Offers</a>
+      <a href="messages.html" class="nav-item">Messages</a>
+    </nav>
+    <div class="sidebar-bottom">
+      <a href="profile.html" class="nav-item">Profile</a>
+      <button type="button" class="sidebar-logout">Log Out</button>
+    </div>
+  </aside>
+
+  <!-- Main -->
+  <main class="main">
+
+    <div class="page-header">
+      <div>
+        <h1 class="page-title">Community Feed</h1>
+        <p class="page-subtitle">Browse requests and offers near you</p>
+      </div>
+      <div class="header-actions">
+        <button type="button" class="btn-outline">+ Post Request</button>
+        <button type="button" class="btn-primary">+ Post Offer</button>
+      </div>
+    </div>
+
+    <!-- Filter Bar -->
+    <div class="filter-bar">
+      <div class="zip-group">
+        <input type="text" id="zipInput" placeholder="Filter by ZIP code..." maxlength="5">
+        <button type="button" class="btn-search" onclick="filterByZip()">Search</button>
+        <button type="button" class="btn-text" onclick="clearFilter()">Clear</button>
+      </div>
+      <div class="type-tabs">
+        <button type="button" class="tab active" onclick="filterByType('all', this)">All</button>
+        <button type="button" class="tab" onclick="filterByType('request', this)">Requests</button>
+        <button type="button" class="tab" onclick="filterByType('offer', this)">Offers</button>
+      </div>
+    </div>
+
+    <p class="results-label" id="results-count">8 posts in your area</p>
+
+    <div class="posts-grid" id="posts-container"></div>
+    <div class="empty-state hidden" id="empty-state">
+      <p>No posts match your filter. Try a different ZIP code or category.</p>
+    </div>
+
+  </main>
+</div>
+
+<!-- Message Modal -->
+<div class="modal-overlay hidden" id="messageModal">
+  <div class="modal">
+    <div class="modal-header">
+      <h3>Send Message</h3>
+      <button type="button" class="modal-close" onclick="closeModal()">&#x2715;</button>
+    </div>
+    <div class="modal-body">
+      <p class="modal-meta">To: <strong id="modal-recipient"></strong></p>
+      <p class="modal-meta">Re: <em id="modal-post-title"></em></p>
+      <textarea id="messageText" placeholder="Write your message..." rows="4"></textarea>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn-outline" onclick="closeModal()">Cancel</button>
+      <button type="button" class="btn-primary" onclick="sendMessage()">Send</button>
+    </div>
+  </div>
+</div>
+
+<script src="js/dashboard.js"></script>
+</body>
+</html>

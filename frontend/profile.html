@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UnityBridge – Profile</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<div class="layout">
+
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <div class="sidebar-logo">
+      <span class="logo-text">UnityBridge</span>
+    </div>
+    <nav class="sidebar-nav">
+      <a href="dashboard.html" class="nav-item">Community</a>
+      <a href="dashboard.html" class="nav-item">Requests</a>
+      <a href="dashboard.html" class="nav-item">Offers</a>
+      <a href="messages.html" class="nav-item">Messages</a>
+    </nav>
+    <div class="sidebar-bottom">
+      <a href="profile.html" class="nav-item active">Profile</a>
+      <button type="button" class="sidebar-logout">Log Out</button>
+    </div>
+  </aside>
+
+  <!-- Main -->
+  <main class="main">
+
+    <div class="page-header">
+      <div>
+        <h1 class="page-title">My Profile</h1>
+        <p class="page-subtitle">Manage your account and preferences</p>
+      </div>
+    </div>
+
+    <div class="profile-layout">
+
+      <!-- Left: Profile card -->
+      <div class="profile-card">
+        <div class="avatar" id="avatarInitials">UU</div>
+        <div class="profile-name" id="profileName">UnityBridge User</div>
+        <div class="profile-username">N/A</div>
+        <div class="profile-rating">
+          <span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+          4.6 <span class="rating-count">No reviews Yet</span>
+        </div>
+        <div class="profile-zip">&#128205; ZIP not provided</div>
+        <div class="profile-since">  </div>
+        <button type="button" class="btn-edit">Edit Profile</button>
+      </div>
+
+      <!-- Right: Info + Settings + My Posts -->
+      <div class="profile-right">
+
+        <!-- Account Information -->
+        <div class="info-card">
+          <div class="card-title">Account Information</div>
+          <div class="info-row">
+            <span class="info-label">First Name</span>
+            <span class="info-value"> N/A </span>
+          </div>
+          <div class="info-row">
+            <span class="info-label">Last Name</span>
+            <span class="info-value"> N/A </span>
+          </div>
+          <div class="info-row">
+            <span class="info-label">Username</span>
+            <span class="info-value"> N/A </span>
+          </div>
+          <div class="info-row">
+            <span class="info-label">Email</span>
+            <span class="info-value">N/A</span>
+          </div>
+          <div class="info-row">
+            <span class="info-label">Phone</span>
+            <span class="info-value">N/A</span>
+          </div>
+          <div class="info-row">
+            <span class="info-label">ZIP Code</span>
+            <span class="info-value">N/A</span>
+          </div>
+        </div>
+
+        <!-- Settings -->
+        <div class="info-card">
+          <div class="card-title">Settings</div>
+
+          <div class="setting-row">
+            <div class="setting-info">
+              <span class="setting-label">Dark Mode</span>
+              <span class="setting-desc">Switch between light and dark theme</span>
+            </div>
+            <label class="toggle-wrap" aria-label="Toggle dark mode">
+              <input type="checkbox" id="darkModeToggle" onchange="toggleTheme()">
+              <span class="slider"></span>
+            </label>
+          </div>
+
+          <div class="setting-row">
+            <div class="setting-info">
+              <span class="setting-label">Message Notifications</span>
+              <span class="setting-desc">Get notified when you receive a message</span>
+            </div>
+            <label class="toggle-wrap" aria-label="Toggle message notifications">
+              <input type="checkbox" id="notifToggle" checked>
+              <span class="slider"></span>
+            </label>
+          </div>
+
+          <div class="setting-row">
+            <div class="setting-info">
+              <span class="setting-label">Show ZIP Code on Posts</span>
+              <span class="setting-desc">Display your ZIP code publicly on your posts</span>
+            </div>
+            <label class="toggle-wrap" aria-label="Toggle ZIP visibility">
+              <input type="checkbox" id="zipToggle" checked>
+              <span class="slider"></span>
+            </label>
+          </div>
+        </div>
+
+        <!-- My Posts -->
+        <div class="info-card">
+          <div class="card-title">My Posts</div>
+          <p class="my-posts-subtitle">Requests and offers you have created and posted to the community.</p>
+          <div class="my-posts-grid" id="my-posts-container"></div>
+          <p class="empty-mine hidden" id="empty-mine">You have not posted anything yet.</p>
+        </div>
+
+        <!-- Danger Zone -->
+        <div class="info-card">
+          <div class="card-title">Account</div>
+          <div class="setting-row">
+            <div class="setting-info">
+              <span class="setting-label">Deactivate Account</span>
+              <span class="setting-desc">Temporarily hide your profile and posts</span>
+            </div>
+            <button type="button" class="btn-outline">Deactivate</button>
+          </div>
+          <div class="setting-row">
+            <div class="setting-info">
+              <span class="setting-label">Request Data Removal</span>
+              <span class="setting-desc">Ask us to permanently delete your data</span>
+            </div>
+            <button type="button" class="btn-outline">Request</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </main>
+</div>
+
+<script src="js/profile.js"></script>
+</body>
+</html>

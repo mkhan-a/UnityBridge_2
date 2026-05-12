@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Unity Bridge - Post</title>
+
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@600;700&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --green: #2d6a4f;
+      --green-light: #52b788;
+      --cream: #f8f4ec;
+      --warm: #e9c46a;
+      --dark: #1b1b1b;
+      --muted: #6b7280;
+      --border: #d6cfc2;
+      --red: #e63946;
+
+      /* Going to have this as a variable so if needed to be changed later it can be */
+      --radius: 12px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--cream);
+      color: var(--dark);
+      min-height: 100vh;
+      padding: 2rem 1rem;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 2.5rem;
+    }
+
+    header h1 {
+      font-family: 'Fraunces', serif;
+      font-size: 2.2rem;
+      color: var(--green);
+    }
+
+    header p {
+      color: var(--muted);
+      margin-top: 0.4rem;
+      font-size: 1rem;
+    }
+
+    /* These allow for switching different forms  */
+    .tabs {
+      display: flex;
+      gap: 0.75rem;
+      justify-content: center;
+      margin-bottom: 2rem;
+    }
+
+    .tab-btn {
+      padding: 0.6rem 1.8rem;
+      border-radius: 999px;
+      border: 2px solid var(--green);
+      background: transparent;
+      color: var(--green);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 1rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .tab-btn.active,
+    .tab-btn:hover {
+      background: var(--green);
+      color: white;
+    }
+
+    .form-card {
+      background: white;
+      border-radius: var(--radius);
+      padding: 2rem;
+      max-width: 560px;
+      margin: 0 auto;
+      box-shadow: 0 4px 24px rgba(0, 0, 0, 0.07);
+
+      /* Forms start hidden. The active one gets shown with JavaScript. */
+      display: none;
+    }
+
+    .form-card.active {
+      display: block;
+    }
+
+    .form-card h2 {
+      font-family: 'Fraunces', serif;
+      font-size: 1.5rem;
+      margin-bottom: 0.3rem;
+    }
+
+    .subtitle {
+      color: var(--muted);
+      font-size: 0.9rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .form-group {
+      margin-bottom: 1.2rem;
+    }
+
+    label {
+      display: block;
+      font-weight: 500;
+      font-size: 0.9rem;
+      margin-bottom: 0.4rem;
+      color: var(--dark);
+    }
+
+    input,
+    textarea,
+    select {
+      width: 100%;
+      padding: 0.7rem 1rem;
+      border: 1.5px solid var(--border);
+      border-radius: 8px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.95rem;
+      color: var(--dark);
+      background: var(--cream);
+      transition: border-color 0.2s;
+      outline: none;
+    }
+
+    input:focus,
+    textarea:focus,
+    select:focus {
+      border-color: var(--green-light);
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 100px;
+    }
+
+    .submit-btn {
+      width: 100%;
+      padding: 0.85rem;
+      margin-top: 0.5rem;
+      background: var(--green);
+      color: white;
+      border: none;
+      border-radius: var(--radius);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 1rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.1s;
+    }
+
+    .submit-btn:hover {
+      background: #245e44;
+    }
+
+    .submit-btn:active {
+      transform: scale(0.98);
+    }
+
+    .submit-btn:disabled {
+      background: var(--muted);
+      cursor: not-allowed;
+    }
+
+    /* Small status message after submitting the form */
+    .feedback {
+      margin-top: 1rem;
+      padding: 0.8rem 1rem;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      display: none;
+    }
+
+    .feedback.success {
+      background: #d8f3dc;
+      color: var(--green);
+      display: block;
+    }
+
+    .feedback.error {
+      background: #fde8ea;
+      color: var(--red);
+      display: block;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>Unity Bridge</h1>
+    <p>Give help or get help — every post makes a difference.</p>
+  </header>
+
+  <!--This is for swithicing between tabs. Then the real  switching is handled inside post.js. -->
+  <div class="tabs">
+    <button class="tab-btn active" onclick="showTab('request')">
+      🙋 Ask for Aid
+    </button>
+
+    <button class="tab-btn" onclick="showTab('offer')">
+      🤝 Offer Aid
+    </button>
+  </div>
+
+  <!-- Ask for aid form -->
+  <div class="form-card active" id="request-form">
+    <h2>Ask for Aid</h2>
+    <p class="subtitle">Tell the community what you need and someone will reach out.</p>
+
+    <div class="form-group">
+      <label for="req-username">Your Name</label>
+      <input type="text" id="req-username" placeholder="e.g. Unity Bridge" />
+    </div>
+
+    <div class="form-group">
+      <label for="req-contact">Contact Info</label>
+      <input type="text" id="req-contact" placeholder="e.g. UBridge@email.com or (334) 225-5567" />
+    </div>
+
+    <div class="form-group">
+      <label for="req-title">Title</label>
+      <input type="text" id="req-title" placeholder="e.g. Need groceries this week" />
+    </div>
+
+    <div class="form-group">
+      <label for="req-description">Description</label>
+      <textarea id="req-description" placeholder="Describe what you need in more detail..."></textarea>
+    </div>
+
+    <div class="form-group">
+      <label for="req-category">Category</label>
+      <select id="req-category">
+        <option value="">-- Select a category --</option>
+        <option value="food">Food</option>
+        <option value="shelter">Shelter</option>
+        <option value="transport">Transport</option>
+        <option value="clothing">Clothing</option>
+        <option value="medical">Medical</option>
+        <option value="other">Other</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="req-location">Zip Code</label>
+      <input type="text" id="req-location" placeholder="e.g. 21237" maxlength="10"/>
+    </div>
+
+    <button class="submit-btn" id="req-submit-btn" onclick="submitRequest()">
+      Post My Request
+    </button>
+
+    <div class="feedback" id="req-feedback"></div>
+  </div>
+
+  <!-- The form to offer some aid-->
+  <div class="form-card" id="offer-form">
+    <h2>Offer Aid</h2>
+    <p class="subtitle">Let your community know how you can help.</p>
+
+    <div class="form-group">
+      <label for="off-username">Your Name</label>
+      <input type="text" id="off-username" placeholder="e.g. John Smith" />
+    </div>
+
+    <div class="form-group">
+      <label for="off-contact">Contact Info</label>
+      <input type="text" id="off-contact" placeholder="e.g. john@email.com or (555) 987-6543" />
+    </div>
+
+    <div class="form-group">
+      <label for="off-title">Title</label>
+      <input type="text" id="off-title" placeholder="e.g. Can drive people to appointments" />
+    </div>
+
+    <div class="form-group">
+      <label for="off-description">Description</label>
+      <textarea id="off-description" placeholder="Describe what you're offering in more detail..."></textarea>
+    </div>
+
+    <div class="form-group">
+      <label for="off-category">Category</label>
+      <select id="off-category">
+        <option value="">-- Select a category --</option>
+        <option value="food">Food</option>
+        <option value="shelter">Shelter</option>
+        <option value="transport">Transport</option>
+        <option value="clothing">Clothing</option>
+        <option value="medical">Medical</option>
+        <option value="other">Other</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="off-location">Zip Code</label>
+      <input type="text" id="off-location" placeholder="e.g. 21204" maxlength="10"/>
+    </div>
+
+    <button class="submit-btn" id="off-submit-btn" onclick="submitOffer()">
+      Post My Offer
+    </button>
+
+    <div class="feedback" id="off-feedback"></div>
+  </div>
+
+  <!-- JavaScript for tab switching and submitting the forms -->
+  <script src="js/Post.js"></script>
+</body>
+</html>

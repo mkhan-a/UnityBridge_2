@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UnityBridge – Sign Up</title>
+  <link rel="stylesheet" href="css/SignUP.css">
+  <script src="js/SignUp.js" defer></script>
+</head>
+<body>
+
+  <div class="auth-wrapper">
+
+    <div class="auth-brand">
+      <h1>UnityBridge</h1>
+      <p>Join your local community and start giving or receiving help today.</p>
+    </div>
+
+    <div class="auth-form-panel">
+      <h2>Create an account</h2>
+      <p class="auth-subtitle">Fill in your details to get started</p>
+
+      <form id="signupForm">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="first">First Name</label>
+            <input type="text" id="first" placeholder="Jane" required>
+          </div>
+          <div class="form-group">
+            <label for="last">Last Name</label>
+            <input type="text" id="last" placeholder="Smith" required>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" placeholder="you@example.com" required>
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" id="password" placeholder="Create a password" required>
+        </div>
+        <div class="form-group">
+          <label for="zipcode">ZIP Code</label>
+          <input type="text" id="zipcode" placeholder="e.g. 21204" maxlength="5" required>
+        </div>
+        <button type="submit" class="btn-submit">Create Account</button>
+      </form>
+
+      <p class="auth-link">Already have an account? <a href="Homepage.html">Log in here</a></p>
+    </div>
+
+  </div>
+
+</body>
+</html>

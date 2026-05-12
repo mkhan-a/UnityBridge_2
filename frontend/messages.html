@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UnityBridge – Messages</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<div class="layout">
+
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <div class="sidebar-logo">
+      <span class="logo-text">UnityBridge</span>
+    </div>
+    <nav class="sidebar-nav">
+      <a href="dashboard.html" class="nav-item">Community</a>
+      <a href="dashboard.html" class="nav-item">Requests</a>
+      <a href="dashboard.html" class="nav-item">Offers</a>
+      <a href="messages.html" class="nav-item active">Messages</a>
+    </nav>
+    <div class="sidebar-bottom">
+      <a href="profile.html" class="nav-item">Profile</a>
+      <button type="button" class="sidebar-logout">Log Out</button>
+    </div>
+  </aside>
+
+  <!-- Main -->
+  <main class="main">
+
+    <div class="page-header">
+      <div>
+        <h1 class="page-title">Messages</h1>
+        <p class="page-subtitle">Your conversations with community members</p>
+      </div>
+    </div>
+
+    <div class="messages-layout">
+
+      <!-- Left: list of conversations -->
+      <div class="convo-list" id="convo-list"></div>
+
+      <!-- Right: message thread -->
+      <div class="thread-panel" id="thread-panel">
+
+        <div class="thread-empty" id="thread-empty">
+          <p>Select a conversation to view messages</p>
+        </div>
+
+        <div class="thread-content hidden" id="thread-content">
+          <div class="thread-header" id="thread-header"></div>
+          <div class="thread-messages" id="thread-messages"></div>
+          <div class="thread-compose">
+            <textarea id="replyText" placeholder="Write a reply..." rows="2"></textarea>
+            <button type="button" class="btn-primary" id="sendBtn">Send</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </main>
+</div>
+
+<script src="js/messages.js"></script>
+</body>
+</html>
