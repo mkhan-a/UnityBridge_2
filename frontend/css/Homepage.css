@@ -1,0 +1,133 @@
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: Arial, sans-serif;
+  background: #EDE9E1;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.auth-wrapper {
+  display: flex;
+  width: 820px;
+  max-width: 95vw;
+  min-height: 480px;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 8px 40px rgba(0,0,0,0.13);
+}
+
+/* Left branding panel */
+.auth-brand {
+  width: 280px;
+  flex-shrink: 0;
+  background: #22301E;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 40px 32px;
+  color: #C8DEC0;
+}
+
+.auth-brand h1 {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 10px;
+  letter-spacing: -0.3px;
+}
+
+.auth-brand p {
+  font-size: 0.88rem;
+  color: #8AA882;
+  line-height: 1.55;
+}
+
+/* Right form panel */
+.auth-form-panel {
+  flex: 1;
+  background: #F5F2EB;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 44px 40px;
+}
+
+.auth-form-panel h2 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #22291E;
+  margin-bottom: 4px;
+}
+
+.auth-subtitle {
+  font-size: 0.84rem;
+  color: #96A088;
+  margin-bottom: 26px;
+}
+
+.form-group {
+  margin-bottom: 16px;
+}
+
+label {
+  display: block;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #5C6854;
+  margin-bottom: 5px;
+}
+
+input {
+  width: 100%;
+  padding: 9px 13px;
+  border: 1.5px solid #D5CFBF;
+  border-radius: 7px;
+  font-family: Arial, sans-serif;
+  font-size: 0.9rem;
+  color: #22291E;
+  background: #FDFCF8;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+input:focus { border-color: #4B7A5C; }
+
+.btn-submit {
+  width: 100%;
+  padding: 10px;
+  margin-top: 6px;
+  background: #4B7A5C;
+  color: #fff;
+  border: none;
+  border-radius: 7px;
+  font-family: Arial, sans-serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.btn-submit:hover { background: #3A6148; }
+
+.auth-link {
+  margin-top: 16px;
+  font-size: 0.83rem;
+  color: #96A088;
+  text-align: center;
+}
+
+.auth-link a {
+  color: #4B7A5C;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.auth-link a:hover { text-decoration: underline; }
+
+@media (max-width: 600px) {
+  .auth-brand { display: none; }
+  .auth-form-panel { padding: 32px 24px; }
+}
